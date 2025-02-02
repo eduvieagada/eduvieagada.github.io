@@ -1,1 +1,100 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduvie Agada - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-800 shadow-lg z-50">
+        <ul class="flex justify-center space-x-6 py-4">
+            <li><a href="#home" class="text-white hover:text-green-400 transition-colors">Home</a></li>
+            <li><a href="#skills" class="text-white hover:text-green-400 transition-colors">Skills</a></li>
+            <li><a href="#contact" class="text-white hover:text-green-400 transition-colors">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-gray-100">
+        <img src="./eduvie.jpeg" alt="Profile Picture" 
+             class="w-100 h-100  border-0 border-gray-800 mb-6">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Eduvie Agada</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Senior Software Engineer with 8+ years of experience building scalable web applications
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="min-h-screen bg-gray-100 py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Technical Skills</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Java</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Python</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">.NET</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Google Cloud</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">AWS</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Docker</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Kubernetes</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">ELK Stack</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Grafana</span>
+                <span class="bg-gray-800 text-white px-4 py-2 rounded-full">Prometheus</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen items-center justify-center px-4">
+        <div class="text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Get In Touch</h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://github.com/eduvieagada" target="_blank" 
+                   class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-green-500 transition-colors">
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/eduvieagada" target="_blank" 
+                   class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-green-500 transition-colors">
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <p>&copy; <span id="year"></span> Eduvie Agada. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Update copyright year automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Add scroll animation for project cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-500', 'ease-out', 'opacity-0', 'translate-y-8');
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
